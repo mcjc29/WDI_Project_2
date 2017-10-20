@@ -1,29 +1,36 @@
 {
-  "name": "WDI_Project_2",
+  "name": "project-2",
   "version": "1.0.0",
-  "main": "server.js",
-  "repository": "git@github.com:mcjc29/WDI_Project_2.git",
-  "author": "mcjc29 <marthacarmen@hotmail.co.uk>",
-  "license": "MIT",
+  "description": "Project 2 for WDI London.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "babel-preset-es2015": "^6.24.1",
-    "bcrypt": "^1.0.3",
     "bluebird": "^3.5.0",
-    "body-parser": "^1.17.1",
+    "body-parser": "^1.14.2",
     "browser-sync": "^2.18.8",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
     "express-ejs-layouts": "^2.3.0",
-    "express-flash": "^0.0.2",
-    "express-session": "^1.15.2",
+    "express-flash": "0.0.2",
+    "express-session": "^1.15.6",
+    "method-override": "^2.3.10",
+    "mongoose": "^4.9.4",
+    "morgan": "^1.8.1"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.18.8",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-clean-css": "^3.0.4",
     "gulp-nodemon": "^2.2.1",
+    "gulp-plumber": "^1.1.0",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^2.1.2",
-    "method-override": "^2.3.8",
-    "mongoose": "^4.9.4",
-    "morgan": "^1.8.1"
+    "nodemon": "^1.11.0"
   }
 }
