@@ -2,6 +2,7 @@ const User = require('../models/user');
 
 function sessionsNew(req, res) {
   res.render('sessions/new');
+  // res.render('templateName', { data });
 }
 
 function sessionsCreate(req, res, next) {

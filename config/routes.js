@@ -6,14 +6,14 @@ const secureRoute = require('../lib/secureRoute');
 const statics = require('../controllers/statics');
 
 router.get('/', (req, res) => res.render('statics/homepage'));
-//
+
 // router.route('/services')
 //   .get(servicesController.index)
 //   .post(secureRoute, servicesController.create);
 //
 // router.route('/services/new')
 //   .get(secureRoute, servicesController.new);
-//
+
 // router.route('/services/:id')
 //   .get(servicesController.show)
 //   .put(secureRoute, servicesController.update)

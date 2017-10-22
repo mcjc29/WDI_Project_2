@@ -7,7 +7,12 @@
     <script src="/js/client.js" charset="utf-8"></script>
 
   </head>
+
   <body>
+    <%- include ./partials/_nav %>
+    <% for (const type in messages) { %>
+      <p class="alert alert-<%= type %>"><%= messages[type] %></p>
+  <% } %>
   <%- body %>
   </body>
 </html>

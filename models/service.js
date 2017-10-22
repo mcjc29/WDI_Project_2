@@ -21,7 +21,12 @@ const serviceSchema = new mongoose.Schema({
   },
   image: { type: String, required: true },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  stars: { type: Number, required: true },
+  //overall rating
+  rating: [{
+    type: Number, required: true
+  }, {
+    user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+  }],
   comments: [commentSchema]
 });
 

@@ -1389,7 +1389,7 @@ express-ejs-layouts@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/express-ejs-layouts/-/express-ejs-layouts-2.3.0.tgz#80bee93ed83174c8967a6fcff2fdd3e9afb7087a"
 
-express-flash@0.0.2:
+express-flash@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/express-flash/-/express-flash-0.0.2.tgz#23d1a8bcf3f90d707928e489f96869ecad0acda2"
   dependencies:
