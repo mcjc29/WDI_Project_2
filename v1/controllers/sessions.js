@@ -12,6 +12,7 @@ function sessionsCreate(req, res, next) {
         req.flash('danger', 'Unknown email/password combination');
         return res.redirect('/login');
       }
+
       req.session.userId = user.id;
       req.session.isAuthenticated = true;
 

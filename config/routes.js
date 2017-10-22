@@ -1,37 +1,50 @@
 const router = require('express').Router();
-
+const sessionsController = require('../controllers/sessions');
+const registrationsController = require('../controllers/registrations');
+// const servicesController = require('../controllers/services');
+const secureRoute = require('../lib/secureRoute');
 const statics = require('../controllers/statics');
-const registrations = require('../controllers/registrations');
-const sessions = require('../controllers/sessions');
 
-// router.route('/')
-//   .get(statics.home);
+router.get('/', (req, res) => res.render('statics/homepage'));
+//
+// router.route('/services')
+//   .get(servicesController.index)
+//   .post(secureRoute, servicesController.create);
+//
+// router.route('/services/new')
+//   .get(secureRoute, servicesController.new);
+//
+// router.route('/services/:id')
+//   .get(servicesController.show)
+//   .put(secureRoute, servicesController.update)
+//   .delete(secureRoute, servicesController.delete);
+//
+// router.route('/services/:id/edit')
+//   .get(secureRoute, servicesController.edit);
+//
+// router.route('/services/:id/comments')
+//   .post(secureRoute, servicesController.createComment)
+//   .delete(secureRoute, servicesController.deleteComment);
 
-// router.route('/registration')
-//   .get(registrations.new)
-//   .post(registrations.create);
+router.route('/register')
+  .get(registrationsController.new)
+  .post(registrationsController.create);
 
-// router.route('/session')
-//   .get(sessions.new);
+router.route('/profile')
+  .get(secureRoute, registrationsController.show)
+  .put(secureRoute, registrationsController.update)
+  .delete(secureRoute, registrationsController.delete);
 
-// A home route
-// router.get('/', (req, res) => res.render('homepage'));
+router.route('/profile/edit')
+  .get(secureRoute, registrationsController.edit);
 
-// RESTful routes
-// All URLS should contain the PLURAL... don't chose octopus or people or something silly.
+router.route('/login')
+  .get(sessionsController.new)
+  .post(sessionsController.create);
 
-// INDEX
+router.route('/logout')
+  .get(sessionsController.delete);
 
-// NEW
-
-// SHOW
-
-// CREATE
-
-// EDIT
-
-// UPDATE
-
-// DELETE
+router.all('*', (req, res) => res.notFound());
 
 module.exports = router;

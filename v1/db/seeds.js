@@ -10,13 +10,13 @@ const User = require('../models/user');
 User.collection.drop();
 // Create the models
 
-// User
-// .create(
-// // user
-// // email
-// // password
-// //
-// // )
+User
+.create(
+// user
+// email
+// password
+//
+// )
 
 .then(users => console.log(`${users.length} users created`);)
 .catch(err => console.log(err);

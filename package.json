@@ -2,13 +2,14 @@
   "name": "project-2",
   "version": "1.0.0",
   "description": "Project 2 for WDI London.",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.14.2",
     "browser-sync": "^2.18.8",

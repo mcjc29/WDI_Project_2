@@ -4,7 +4,7 @@ function staticsHome(req, res) {
   User
     .find()
     .exec()
-    .then((users) => res.render('statics/homepage', { users }));
+    .then((users) => res.render('statics/home', { users }));
 }
 
 module.exports = {
