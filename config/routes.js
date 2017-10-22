@@ -7,12 +7,12 @@ const sessions = require('../controllers/sessions');
 router.route('/')
   .get(statics.home);
 
-router.route('/register')
+router.route('/registration')
   .get(registrations.new)
   .post(registrations.create);
 
-// router.route('/session')
-// .get(sessions.new);
+router.route('/session')
+  .get(sessions.new);
 
 // A home route
 // router.get('/', (req, res) => res.render('homepage'));
