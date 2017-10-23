@@ -3,10 +3,9 @@
   <h2><%= service.name %></h2>
   <h3>Ratings:</h3>
   <ul>
-    <li>
-      <h4>Dignity</h4>
-      <%= service.ratings %>
-    </li>
+    <% service.averageRatings.forEach(rating => { %>
+      <p><%= rating.name %>: <%= rating.avg %></p>
+    <% }); %>
   </ul>
   <% if(locals.isAuthenticated && service.belongsTo(user)) { %>
     <a href="/services/<%= service.id %>/edit" class="button">Edit</a>
@@ -64,11 +63,27 @@
           <form method="POST" action="/services/<%= service.id %>/ratings">
             <div>
               <label for="dignity">Dignity and Respect</label>
-              <input type="radio" name="dignity" id="dignity" value="1" checked> 1
+              <input type="radio" name="dignity" id="dignity" value="1"> 1
               <input type="radio" name="dignity" id="dignity" value="2"> 2
               <input type="radio" name="dignity" id="dignity" value="3"> 3
               <input type="radio" name="dignity" id="dignity" value="4"> 4
               <input type="radio" name="dignity" id="dignity" value="5"> 5
+            </div>
+            <div>
+              <label for="advice">Quality of Advice</label>
+              <input type="radio" name="advice" id="advice" value="1"> 1
+              <input type="radio" name="advice" id="advice" value="2"> 2
+              <input type="radio" name="advice" id="advice" value="3"> 3
+              <input type="radio" name="advice" id="advice" value="4"> 4
+              <input type="radio" name="advice" id="advice" value="5"> 5
+            </div>
+            <div>
+              <label for="facilities">Quality of facilities</label>
+              <input type="radio" name="facilities" id="facilities" value="1"> 1
+              <input type="radio" name="facilities" id="facilities" value="2"> 2
+              <input type="radio" name="facilities" id="facilities" value="3"> 3
+              <input type="radio" name="facilities" id="facilities" value="4"> 4
+              <input type="radio" name="facilities" id="facilities" value="5"> 5
             </div>
             <input type="submit" value="Add rating">
           </form>

@@ -24,9 +24,8 @@ function createRoute(req, res, next) {
       next(err);
     });
 }
-function add(a, b) {
-  return a + b;
-}
+
+
 function showRoute(req, res, next) {
   Service
     .findById(req.params.id)
@@ -35,19 +34,32 @@ function showRoute(req, res, next) {
     .then(service => {
       if(!service) return res.notFound();
       if (service.ratings.length > 0) {
-        const averageRatings = [];
+        const averageDignity = [];
+        const averageAdvice = [];
+        const averageFacilities = [];
         for (var i = 0; i < service.ratings.length; i++) {
           const rating = service.ratings[i];
-          averageRatings.push(parseInt(rating.dignity));
+          averageDignity.push(parseInt(rating.dignity));
+          averageAdvice.push(parseInt(rating.advice));
+          averageFacilities.push(parseInt(rating.facilities));
         }
-        const sum = averageRatings.reduce(add, 0);
-        const average = sum/averageRatings.length;
-        
-        return service.save();
 
-        // service.averageRatings = [averageOfTheRatings]
-        // save the service with .save()
-        // 4 objects 2 keys per eacgh - name, value av rating
+        const avgRatingDig = { name: 'dignity', avg: average(averageDignity) };
+        const avgRatingAdv = { name: 'advice', avg: average(averageAdvice) };
+        const avgRatingFac = { name: 'facilities', avg: average(averageFacilities) };
+
+        service.averageRatings = [avgRatingDig];
+        service.averageRatings = [avgRatingAdv];
+        service.averageRatings = [avgRatingFac];
+        service.save();
+
+      }
+
+      function average(toDo) {
+        const sum = toDo.reduce((previous, current) => current += previous);
+        const result = Math.round( (sum/toDo.length) * 10 ) / 10;
+        console.log(result);
+        return result;
       }
 
       return res.render('services/show', { service });
