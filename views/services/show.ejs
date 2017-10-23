@@ -10,9 +10,9 @@
   <% if(locals.isAuthenticated && service.belongsTo(user)) { %>
     <a href="/services/<%= service.id %>/edit" class="button">Edit</a>
 
-    <form method="POST" action="/services/<%= service.id %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <button class="button alert">Delete</button>
+    <form method="POST" action="/services/<%= service._id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <button class="button alert">Delete</button>
     </form>
     <% } %>
 
@@ -49,9 +49,9 @@
             <p><%= comment.content %></p>
             <small><%= comment.createdBy.username %></small>
             <% if(locals.isAuthenticated && comment.belongsTo(user)) { %>
-              <form method="POST" action="/services/<%= service.id %>/comments/<%= comment.id %>">
-              <input type="hidden" name="_method" value="DELETE">
-              <button class="button alert">Delete</button>
+              <form method="POST" action="/services/<%= service._id %>/comments/<%= comment._id %>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button class="button alert">Delete</button>
               </form>
               <% } %>
               <% }) %>

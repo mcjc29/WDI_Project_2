@@ -34,32 +34,31 @@ function showRoute(req, res, next) {
     .then(service => {
       if(!service) return res.notFound();
       if (service.ratings.length > 0) {
-        const averageDignity = [];
-        const averageAdvice = [];
-        const averageFacilities = [];
+        const averageDignity = [[], [], []];
         for (var i = 0; i < service.ratings.length; i++) {
           const rating = service.ratings[i];
-          averageDignity.push(parseInt(rating.dignity));
-          averageAdvice.push(parseInt(rating.advice));
-          averageFacilities.push(parseInt(rating.facilities));
+          if (rating.dignity) averageDignity[0].push(parseInt(rating.dignity));
+          if (rating.advice) averageDignity[1].push(parseInt(rating.advice));
+          if (rating.facilities) averageDignity[2].push(parseInt(rating.facilities));
         }
 
-        const avgRatingDig = { name: 'dignity', avg: average(averageDignity) };
-        const avgRatingAdv = { name: 'advice', avg: average(averageAdvice) };
-        const avgRatingFac = { name: 'facilities', avg: average(averageFacilities) };
+        const avgRatingDig = { name: 'dignity', avg: average(averageDignity[0]) };
+        const avgRatingAdv = { name: 'advice', avg: average(averageDignity[1]) };
+        const avgRatingFac = { name: 'facilities', avg: average(averageDignity[2]) };
 
-        service.averageRatings = [avgRatingDig];
-        service.averageRatings = [avgRatingAdv];
-        service.averageRatings = [avgRatingFac];
+        service.averageRatings = [avgRatingDig, avgRatingAdv, avgRatingFac];
         service.save();
 
       }
 
       function average(toDo) {
-        const sum = toDo.reduce((previous, current) => current += previous);
-        const result = Math.round( (sum/toDo.length) * 10 ) / 10;
-        console.log(result);
-        return result;
+        if (toDo.length > 0) {
+          const sum = toDo.reduce((previous, current) => current += previous);
+          const result = Math.round( (sum/toDo.length) * 10 ) / 10;
+          return result;
+        } else {
+          return 'No Ratings Yet';
+        }
       }
 
       return res.render('services/show', { service });
@@ -137,9 +136,11 @@ function deleteCommentRoute(req, res, next) {
     .findById(req.params.id)
     .exec()
     .then(service => {
+      console.log(req.params.id);
       if (!service) return res.notFound();
       if (!service.belongsTo(req.user)) return res.unauthorized('You do not have permission to delete that resource');
-      service.comments.id(req.params.commentId).remove();
+      const comment = service.comments.id(req.params.commentId);
+      comment.remove();
 
       return service.save();
     })

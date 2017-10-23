@@ -23,7 +23,9 @@ router.route('/services/:id/edit')
   .get(secureRoute, servicesController.edit);
 
 router.route('/services/:id/comments')
-  .post(secureRoute, servicesController.createComment)
+  .post(secureRoute, servicesController.createComment);
+
+router.route('/services/:id/comments/:commentId')
   .delete(secureRoute, servicesController.deleteComment);
 
 router.route('/services/:id/ratings')
@@ -38,7 +40,7 @@ router.route('/profile')
   .put(secureRoute, registrationsController.update)
   .delete(secureRoute, registrationsController.delete);
 
-router.route('/profile/edit')
+router.route('/profile/:id/edit')
   .get(secureRoute, registrationsController.edit);
 
 router.route('/login')
