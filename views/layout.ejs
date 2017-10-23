@@ -10,6 +10,9 @@
 
   <body>
     <%- include ./partials/_nav %>
+    <%- include ./partials/_scripts %>
+    <%- include ./partials/_stylesheets %>
+
     <% for (const type in messages) { %>
       <p class="alert alert-<%= type %>"><%= messages[type] %></p>
   <% } %>

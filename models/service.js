@@ -16,10 +16,10 @@ const serviceSchema = new mongoose.Schema({
     line1: { type: String, required: true },
     line2: String,
     city: { type: String, required: true },
-    postcode: { type: String, required: true },
-    country: { type: String, required: true }
+    postcode: { type: String, required: true }
   },
   image: { type: String, required: true },
+  website: { type: String, required: true },
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   //overall rating
   rating: [{
