@@ -24,14 +24,32 @@ function createRoute(req, res, next) {
       next(err);
     });
 }
-
+function add(a, b) {
+  return a + b;
+}
 function showRoute(req, res, next) {
   Service
     .findById(req.params.id)
-    .populate('createdBy comments.createdBy')
+    .populate('createdBy comments.createdBy ratings.createdBy')
     .exec()
     .then(service => {
       if(!service) return res.notFound();
+      if (service.ratings.length > 0) {
+        const averageRatings = [];
+        for (var i = 0; i < service.ratings.length; i++) {
+          const rating = service.ratings[i];
+          averageRatings.push(parseInt(rating.dignity));
+        }
+        const sum = averageRatings.reduce(add, 0);
+        const average = sum/averageRatings.length;
+        
+        return service.save();
+
+        // service.averageRatings = [averageOfTheRatings]
+        // save the service with .save()
+        // 4 objects 2 keys per eacgh - name, value av rating
+      }
+
       return res.render('services/show', { service });
     })
     .catch(next);
@@ -123,10 +141,8 @@ function createRatingRoute(req, res, next) {
     .exec()
     .then(service => {
       if (!service) return res.notFound();
-
-      req.body.createdBy = req.user;
+      req.body.createdBy = req.session.userId;
       service.ratings.push(req.body);
-
       return service.save();
     })
     .then(() => res.redirect(`/services/${req.params.id}`))

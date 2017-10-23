@@ -11,10 +11,10 @@ commentSchema.methods.belongsTo = function commentBelongsTo(user) {
 };
 
 const ratingSchema = new mongoose.Schema({
-  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  dignity: {value: String },
-  advice: {value: String },
-  facilities: {value: String }
+  dignity: {type: String },
+  advice: {type: String },
+  facilities: {type: String },
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 });
 
 ratingSchema.methods.belongsTo = function ratingBelongsTo(user) {
@@ -36,9 +36,10 @@ const serviceSchema = new mongoose.Schema({
   website: { type: String, required: true },
   number: String,
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  // user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   comments: [commentSchema],
-  ratings: [ratingSchema]
+  ratings: [ratingSchema],
+  averageRatings: []
 });
 
 serviceSchema.methods.belongsTo = function serviceBelongsTo(user) {

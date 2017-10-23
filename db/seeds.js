@@ -5,11 +5,11 @@ const { dbUri } = require('../config/environment');
 mongoose.connect(dbUri, { useMongoClient: true });
 
 // Require the model
-const Service = require('../models/service');
 const User = require('../models/user');
+const Service = require('../models/service');
 // Drop the model
-Service.collection.drop();
 User.collection.drop();
+Service.collection.drop();
 
 User
   .create([{
