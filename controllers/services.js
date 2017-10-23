@@ -42,9 +42,9 @@ function showRoute(req, res, next) {
           if (rating.facilities) averageDignity[2].push(parseInt(rating.facilities));
         }
 
-        const avgRatingDig = { name: 'dignity', avg: average(averageDignity[0]) };
-        const avgRatingAdv = { name: 'advice', avg: average(averageDignity[1]) };
-        const avgRatingFac = { name: 'facilities', avg: average(averageDignity[2]) };
+        const avgRatingDig = { name: 'Dignity and Respect', avg: average(averageDignity[0]) };
+        const avgRatingAdv = { name: 'Quality of Advice', avg: average(averageDignity[1]) };
+        const avgRatingFac = { name: 'Quality of facilities', avg: average(averageDignity[2]) };
 
         service.averageRatings = [avgRatingDig, avgRatingAdv, avgRatingFac];
         service.save();
@@ -136,7 +136,6 @@ function deleteCommentRoute(req, res, next) {
     .findById(req.params.id)
     .exec()
     .then(service => {
-      console.log(req.params.id);
       if (!service) return res.notFound();
       if (!service.belongsTo(req.user)) return res.unauthorized('You do not have permission to delete that resource');
       const comment = service.comments.id(req.params.commentId);
