@@ -3,10 +3,20 @@
     <label for="name">Name</label>
     <input type="text" name="name" id="name" required>
   </div>
+  <div class="form-group">
+  <label for="categorySelect">Services Offered</label>
+  <select multiple class="form-control" id="categorySelect">
+    <option>Contraception</option>
+    <option>Sexual Health Advice</option>
+    <option>Domestic Abuse</option>
+    <option>Sexual Assult Advice</option>
+    <option>Pregnancy Support</option>
+  </select>
+</div>
   <fieldset>
     <legend>Address</legend>
     <div>
-      <label for="line1">Line 1</label>
+      <label for="line">Line 1</label>
       <input type="text" name="address[line1]" id="line1" required>
     </div>
     <div>
@@ -24,16 +34,16 @@
 
   </fieldset>
   <div>
-    <label for="stars">Stars</label>
-    <input type="number" name="stars" id="stars" min="1" max="5" required>
-  </div>
-  <div>
     <label for="image">Image</label>
     <input type="text" name="image" id="image" required>
   </div>
   <div>
-    <label for="website">Image</label>
+    <label for="website">Website</label>
     <input type="text" name="website" id="website" required>
   </div>
-  <button class="button">Register</button>
+  <div>
+    <label for="number">Number</label>
+    <input type="text" name="number" id="number" required>
+  </div>
+  <button class="button">Save</button>
 </form>

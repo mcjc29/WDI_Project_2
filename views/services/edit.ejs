@@ -2,39 +2,43 @@
   <input type="hidden" name="_method" value="PUT">
   <div>
     <label for="name">Name</label>
-    <input type="text" name="name" id="name" required value="<%= service.firstName %>">
+    <input type="text" name="name" id="name" required minlength="2" value="<%= service.name %>">
+  </div>
+  <div>
+    <label for="category">Category</label>
+    <input type="text" name="category" id="category" required minlength="2" value="<%= service.category %>">
   </div>
   <fieldset>
     <legend>Address</legend>
     <div>
       <label for="line1">Line 1</label>
-      <input type="text" name="address[line1]" id="line1" required value="<%= service.line1 %>">
+      <input type="text" name="address[line1]" id="line1" required minlength="2" value="<%= service.address.line1 %>">
     </div>
     <div>
       <label for="line2">Line 2</label>
-      <input type="text" name="address[line2]" id="line2" value="<%= service.line2 %>">
+      <input type="text" name="address[line2]" id="line2" value="<%= service.address.line2 %>">
     </div>
     <div>
       <label for="city">City</label>
-      <input type="text" name="address[city]" id="city" required value="<%= service.city %>">
+      <input type="text" name="address[city]" id="city" required value="<%= service.address.city %>">
     </div>
     <div>
       <label for="postcode">Postcode</label>
-      <input type="text" name="address[postcode]" id="postcode" required value="<%= service.postcode %>">
+      <input type="text" name="address[postcode]" id="postcode" required value="<%= service.address.postcode %>">
     </div>
-
   </fieldset>
-  <div>
-    <label for="stars">Stars</label>
-    <input type="number" name="stars" id="stars" min="1" max="5" required value="<%= service.stars %>">
-  </div>
+
   <div>
     <label for="image">Image</label>
     <input type="text" name="image" id="image" required value="<%= service.image %>">
   </div>
   <div>
-    <label for="website">Image</label>
+    <label for="website">Website</label>
     <input type="text" name="website" id="website" required value="<%= service.website %>">
   </div>
-  <button class="button">Register</button>
+  <div>
+    <label for="number">Number</label>
+    <input type="text" name="number" id="number" required value="<%= service.number %>">
+  </div>
+  <button class="button">Save Changes</button>
 </form>

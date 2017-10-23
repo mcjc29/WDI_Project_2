@@ -3,7 +3,7 @@ const sessionsController = require('../controllers/sessions');
 const registrationsController = require('../controllers/registrations');
 const servicesController = require('../controllers/services');
 const secureRoute = require('../lib/secureRoute');
-const statics = require('../controllers/statics');
+// const statics = require('../controllers/statics');
 
 router.get('/', (req, res) => res.render('statics/homepage'));
 
@@ -25,6 +25,9 @@ router.route('/services/:id/edit')
 router.route('/services/:id/comments')
   .post(secureRoute, servicesController.createComment)
   .delete(secureRoute, servicesController.deleteComment);
+
+router.route('/services/:id/ratings')
+  .post(secureRoute, servicesController.createRating);
 
 router.route('/register')
   .get(registrationsController.new)

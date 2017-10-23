@@ -117,6 +117,24 @@ function deleteCommentRoute(req, res, next) {
     .catch(next);
 }
 
+function createRatingRoute(req, res, next) {
+  Service
+    .findById(req.params.id)
+    .exec()
+    .then(service => {
+      if (!service) return res.notFound();
+
+      req.body.createdBy = req.user;
+      service.ratings.push(req.body);
+
+      return service.save();
+    })
+    .then(() => res.redirect(`/services/${req.params.id}`))
+    .catch((err) => {
+      if (err.name === 'ValidationError') res.badRequest(`/services/${req.params.id}`, err.toString());
+      next(err);
+    });
+}
 module.exports = {
   index: indexRoute,
   new: newRoute,
@@ -126,5 +144,6 @@ module.exports = {
   update: updateRoute,
   delete: deleteRoute,
   createComment: createCommentRoute,
-  deleteComment: deleteCommentRoute
+  deleteComment: deleteCommentRoute,
+  createRating: createRatingRoute
 };
