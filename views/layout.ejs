@@ -8,6 +8,7 @@
   </head>
 
   <body>
+    <div class="container">
     <%- include ./partials/_nav %>
     <%- include ./partials/_stylesheets %>
     <%- include ./partials/_scripts %>
@@ -16,5 +17,6 @@
       <p class="alert alert-<%= type %>"><%= messages[type] %></p>
   <% } %>
   <%- body %>
+</div>
   </body>
 </html>
