@@ -19,7 +19,12 @@ function showRoute(req, res) {
 }
 
 function editRoute(req, res) {
-  return res.render('registrations/edit');
+  User
+    .findById(req.params.id)
+    .exec()
+    .then((user) => {
+      return res.render('profile/edit', { user });
+    });
 }
 
 function updateRoute(req, res, next) {

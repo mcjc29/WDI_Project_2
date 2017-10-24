@@ -1,16 +1,33 @@
 body {
   font-family: 'Roboto', sans-serif;
   color: black;
+  background-color: white;
 }
 
 a {
   text-decoration: none;
   color: black;
+  font-size: 25px;
 }
 
 h1 {
-  font-size: 20pt;
+  font-size: 30px;
 }
 
 h2 {
-  font-size: 15pt;
+  font-size: 25px;
+}
+
+
+h3 {
+  font-size: 20px;
+}
+
+p {
+  font-size: 20px;
+}
+
+
+.buffer-top {
+  margin-top: 30px;
+}

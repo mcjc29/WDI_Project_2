@@ -18,7 +18,10 @@ function createRoute(req, res, next) {
 
   Service
     .create(req.body)
-    .then(() => res.redirect('/services'))
+    .then(() => {
+      console.log(req.body);
+      res.redirect('/services');
+    })
     .catch((err) => {
       if(err.name === 'ValidationError') return res.badRequest(`/services/${req.params.id}/edit`, err.toString());
       next(err);
@@ -47,6 +50,7 @@ function showRoute(req, res, next) {
         const avgRatingFac = { name: 'Quality of facilities', avg: average(averageDignity[2]) };
 
         service.averageRatings = [avgRatingDig, avgRatingAdv, avgRatingFac];
+        // const avgOfAverages = average(avgRatingDig, avgRatingAdv, avgRatingFac);
         service.save();
 
       }

@@ -5,7 +5,7 @@
 
 <p><%= user.email %></p>
 
-<a href="/profile/edit" class="button">Edit</a>
+<a href="/profile/<%= user.id %>/edit" class="button">Edit</a>
 
 <form method="POST" action="/profile">
   <input type="hidden" name="_method" value="DELETE">
