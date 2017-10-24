@@ -16,7 +16,7 @@
       <%= service.website %><br>
       <%= service.number %><br>
     </p>
-    
+
     <small>Added by: <%= service.createdBy.username %></small>
 
     <% if(locals.isAuthenticated && service.belongsTo(user)) { %>

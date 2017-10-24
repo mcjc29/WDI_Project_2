@@ -1,4 +1,32 @@
 body {
   font-family: 'Roboto', sans-serif;
-  color: #2199e8;
+  color: black;
+}
+
+h1 {
+  font-size: 20pt;
+}
+h2 {
+  font-size: 15pt;
+}
+.box {
+  text-align: center;
+  border: 1px black solid;
+}
+.service-name {
+  position: relative;
+  bottom: 0px;
+}
+.logo-container {
+  position: relative;
+  padding: 5%;
+  overflow: hidden;
+  border: 1px black solid;
+  text-align: center;
+}
+
+.logo {
+  text-align: center;
+  margin: 0 auto;
+  width: 50%;
 }

@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <title></title>
     <script src="/js/client.js" charset="utf-8"></script>
-
+    <%- include ./partials/_stylesheets %>
+    <%- include ./partials/_scripts %>
   </head>
 
   <body>
     <div class="container">
-    <%- include ./partials/_nav %>
-    <%- include ./partials/_stylesheets %>
-    <%- include ./partials/_scripts %>
+      <%- include ./partials/_nav %>
+
 
     <% for (const type in messages) { %>
       <p class="alert alert-<%= type %>"><%= messages[type] %></p>

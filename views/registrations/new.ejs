@@ -1,31 +1,38 @@
-<form method="POST" action="/register">
-  <div>
-
-    <label for="firstName">First Name</label>
-    <input type="text" name="firstName" id="firstName">
-  </div>
-  <div>
-
-    <label for="username">Last Name</label>
-    <input type="text" name="username" id="username">
-  </div>
-  <div>
-
-    <label for="lastName">Username</label>
-    <input type="text" name="lastName" id="lastName">
-  </div>
-  <div>
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email">
-  </div>
-  <div>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password">
-  </div>
-  <div>
-    <label for="passwordConfirmation">Password Confirmation</label>
-    <input type="password" name="passwordConfirmation" id="passwordConfirmation">
-  </div>
-
-  <button>Register</button>
-</form>
+<div class="row">
+  <form class="col s12" method="POST" action="/register">
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="firstName" name="firstName" type="text" class="validate">
+        <label class="active" for="firstName">First Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="lastName" name="lastName" type="text" class="validate">
+        <label class="active" for="lastName">Last Name</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="username" name="username" type="text" class="validate">
+        <label class="active"for="username">Username</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" name="email" type="email" class="validate">
+        <label class="active" for="email">Email</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="password" name="password" type="password" class="validate">
+        <label class="active" for="password">Password</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <label class="active" for="passwordConfirmation">Confirm Password</label>
+        <input type="password" name="passwordConfirmation" id="passwordConfirmation">
+    </div>
+    <button>Register</button>
+  </form>
+</div>
