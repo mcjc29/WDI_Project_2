@@ -1,42 +1,43 @@
 <form method="POST" action="/services/<%= service._id %>">
   <input type="hidden" name="_method" value="PUT">
-  <div>
+  <div class="form-group">
     <label for="name">Name</label>
     <input type="text" name="name" id="name" required minlength="2" value="<%= service.name %>">
   </div>
-  <div>
+  <div class="form-group">
     <label for="category">Category</label>
     <input type="text" name="category" id="category" required minlength="2" value="<%= service.category %>">
   </div>
+
   <fieldset>
     <legend>Address</legend>
-    <div>
+    <div class="form-group">
       <label for="line1">Line 1</label>
       <input type="text" name="address[line1]" id="line1" required minlength="2" value="<%= service.address.line1 %>">
     </div>
-    <div>
+    <div class="form-group">
       <label for="line2">Line 2</label>
       <input type="text" name="address[line2]" id="line2" value="<%= service.address.line2 %>">
     </div>
-    <div>
+    <div class="form-group">
       <label for="city">City</label>
       <input type="text" name="address[city]" id="city" required value="<%= service.address.city %>">
     </div>
-    <div>
+    <div class="form-group">
       <label for="postcode">Postcode</label>
       <input type="text" name="address[postcode]" id="postcode" required value="<%= service.address.postcode %>">
     </div>
   </fieldset>
 
-  <div>
+  <div class="form-group">
     <label for="image">Image</label>
     <input type="text" name="image" id="image" required value="<%= service.image %>">
   </div>
-  <div>
+  <div class="form-group">
     <label for="website">Website</label>
     <input type="text" name="website" id="website" required value="<%= service.website %>">
   </div>
-  <div>
+  <div class="form-group">
     <label for="number">Number</label>
     <input type="text" name="number" id="number" required value="<%= service.number %>">
   </div>
