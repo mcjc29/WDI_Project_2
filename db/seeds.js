@@ -39,7 +39,7 @@ User
         createdBy: users[0]
       }, {
         name: 'The Gynae Centre',
-        category: 'Sexual Health Advice',
+        category: 'Sexual Health',
         categoryIcon: '',
         address: {
           line1: 'Suite 23, Milford House,',
@@ -53,7 +53,7 @@ User
         createdBy: users[0]
       }, {
         name: 'Brixton Advice Center',
-        category: 'Domestic Abuse',
+        category: 'Domestic & Sexual Abuse',
         categoryIcon: '',
         address: {
           line1: '167 Railton Road,',
@@ -81,7 +81,7 @@ User
         createdBy: users[0]
       }, {
         name: 'East London Rape Crisis Service',
-        category: 'Sexual Assult',
+        category: 'Domestic & Sexual Abuse',
         categoryIcon: '',
         address: {
           line1: 'PO Box 58203,',
@@ -95,7 +95,7 @@ User
         createdBy: users[0]
       }, {
         name: 'Solace Women\'s Aid',
-        category: 'Sexual Assult',
+        category: 'Domestic & Sexual Abuse',
         categoryIcon: '',
         address: {
           line1: 'Unit 5-7, Blenheim Court',
@@ -109,7 +109,7 @@ User
         createdBy: users[0]
       }, {
         name: 'Burrell Street Clinic',
-        category: 'Contraception, Sexual Health',
+        category: 'Sexual Health',
         categoryIcon: '',
         address: {
           line1: '4-6 Burrell Street,',

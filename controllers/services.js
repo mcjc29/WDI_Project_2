@@ -3,9 +3,16 @@ const Service = require('../models/service');
 function indexRoute(req, res, next) {
   Service
     .find()
-    .populate('createdBy')
+    // .populate('createdBy')
     .exec()
-    .then((services) => res.render('services/index', { services }))
+    .then((services) => {
+      // console.log(req.params.category);
+      const filteredServices = services.filter(service => {
+        return service.category === req.params.category;
+      });
+
+      res.render('services/index', { filteredServices });
+    })
     .catch(next);
 }
 
@@ -36,6 +43,7 @@ function showRoute(req, res, next) {
     .exec()
     .then(service => {
       if(!service) return res.notFound();
+      let avgOfAverages = null;
       if (service.ratings.length > 0) {
         const averageDignity = [[], [], []];
         for (var i = 0; i < service.ratings.length; i++) {
@@ -49,9 +57,8 @@ function showRoute(req, res, next) {
         const avgRatingAdv = { name: 'Quality of Advice', avg: average(averageDignity[1]) };
         const avgRatingFac = { name: 'Quality of facilities', avg: average(averageDignity[2]) };
 
-        service.averageRatings = [avgRatingDig, avgRatingAdv, avgRatingFac];
-        // const avgOfAverages = average(avgRatingDig, avgRatingAdv, avgRatingFac);
-        service.save();
+        const averageRatings = [avgRatingDig.avg, avgRatingAdv.avg, avgRatingFac.avg];
+        avgOfAverages = average(averageRatings);
 
       }
 
@@ -65,7 +72,7 @@ function showRoute(req, res, next) {
         }
       }
 
-      return res.render('services/show', { service });
+      return res.render('services/show', { service, avgOfAverages });
     })
     .catch(next);
 }
