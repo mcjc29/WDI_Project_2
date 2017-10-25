@@ -26,7 +26,7 @@ function createRoute(req, res, next) {
   Service
     .create(req.body)
     .then(() => {
-      console.log(req.body);
+      // console.log(req.body);
       res.redirect('/services');
     })
     .catch((err) => {
@@ -59,7 +59,7 @@ function showRoute(req, res, next) {
 
         const averageRatings = [avgRatingDig.avg, avgRatingAdv.avg, avgRatingFac.avg];
         avgOfAverages = average(averageRatings);
-
+console.log(service);
       }
 
       function average(toDo) {

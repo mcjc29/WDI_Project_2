@@ -3,7 +3,6 @@ const sessionsController = require('../controllers/sessions');
 const registrationsController = require('../controllers/registrations');
 const servicesController = require('../controllers/services');
 const secureRoute = require('../lib/secureRoute');
-// const statics = require('../controllers/statics');
 
 router.get('/', (req, res) => res.render('statics/homepage'));
 
