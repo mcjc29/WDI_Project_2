@@ -6,7 +6,7 @@ const secureRoute = require('../lib/secureRoute');
 
 router.get('/', (req, res) => res.render('statics/homepage'));
 
-router.route('/services/:category')
+router.route('/services/categories/:category')
   .get(servicesController.index)
   .post(secureRoute, servicesController.create);
 

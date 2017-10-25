@@ -21,6 +21,12 @@ ratingSchema.methods.belongsTo = function ratingBelongsTo(user) {
   if(typeof this.createdBy.id === 'string') return this.createdBy.id === user.id;
   return user.id === this.createdBy.toString();
 };
+//
+// const categorySchema = new mongoose.Schema({
+//   sexual: []
+//   domestic:
+//   pregnancy:
+// });
 
 const serviceSchema = new mongoose.Schema({
   name: String,
@@ -36,7 +42,6 @@ const serviceSchema = new mongoose.Schema({
   website: { type: String, required: true },
   number: String,
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  // user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   comments: [commentSchema],
   ratings: [ratingSchema],
   averageRatings: []

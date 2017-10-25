@@ -3,14 +3,14 @@ const Service = require('../models/service');
 function indexRoute(req, res, next) {
   Service
     .find()
-    // .populate('createdBy')
+    .populate('createdBy')
     .exec()
     .then((services) => {
-      // console.log(req.params.category);
+      console.log(req.params.category);
       const filteredServices = services.filter(service => {
         return service.category === req.params.category;
       });
-
+      console.log(filteredServices);
       res.render('services/index', { filteredServices });
     })
     .catch(next);
@@ -26,7 +26,6 @@ function createRoute(req, res, next) {
   Service
     .create(req.body)
     .then(() => {
-      // console.log(req.body);
       res.redirect('/services');
     })
     .catch((err) => {
@@ -37,6 +36,7 @@ function createRoute(req, res, next) {
 
 
 function showRoute(req, res, next) {
+// console.log(req.params.id);
   Service
     .findById(req.params.id)
     .populate('createdBy comments.createdBy ratings.createdBy')
@@ -59,7 +59,6 @@ function showRoute(req, res, next) {
 
         const averageRatings = [avgRatingDig.avg, avgRatingAdv.avg, avgRatingFac.avg];
         avgOfAverages = average(averageRatings);
-console.log(service);
       }
 
       function average(toDo) {
