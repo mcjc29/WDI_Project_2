@@ -1,100 +1,130 @@
 <div class="col-12">
-  <div class="row">
-    <div class="col-md-12 service-name-logo">
-      <div class="logo-container" style="background-image: url('<%= service.image %>'); height: 200px;"></div>
-        <h2><%= service.name %></h2>
-        <h3><%= service.category %></h3>
+  <div class="services-box">
+
+    <div class="row">
+      <div class="col-md-12 service-name-logo">
+        <div class="logo-container" style="background-image: url('<%= service.image %>'); height: 200px;"></div>
+        <div class="services-box">
+          <h2><%= service.name %></h2>
+          <h3><%= service.category %></h3>
+        </div>
+
       </div>
     </div>
     <div class="row">
-    <div class="col-lg-6 logo-name">
-      <h3>Ratings:</h3>
-      <h4> <%= avgOfAverages %> </h4>
-      <ul>
-        <% service.averageRatings.forEach(rating => { %>
-          <p><%= rating.name %>: <%= rating.avg %></p>
-        <% }); %>
-      </ul>
-    </div>
-  <div class="col-lg-6 logo-address">
-    <p>
-      <%= service.address.line1 %><br>
-      <% if(service.address.line2) { %><%= service.address.line2 %><br><% } %>
-      <%= service.address.city %><br>
-      <%= service.address.postcode %><br>
-      <%= service.website %><br>
-      <%= service.number %><br>
-    </p>
-    <small>Added by: <%= service.createdBy.username %></small>
-    <% if(locals.isAuthenticated && service.belongsTo(user)) { %>
-      <a href="/services/<%= service.id %>/edit" class="button">Edit</a>
-      <% } %>
-</div>
-</div>
-</div>
-<div class="row">
-  <div class="col-md-12">
+      <div class="col-12 logo-name text-center">
+        <div class="services-box">
 
-    <% if(locals.isAuthenticated) { %>
-      <section>
-      <h3>Rate Each Service</h3>
-      <form method="POST" action="/services/<%= service.id %>/ratings">
-        <div>
+          <h3>Ratings:</h3>
+          <h4> <%= avgOfAverages %> </h4>
+          <ul>
+            <% averageDisplay.forEach(rating => { %>
+              <p><%= rating.name %>: <%= rating.avg %></p>
+              <% }); %>
+            </ul>
+          </div>
+
+        </div>
+        <div class="col-12 text-center">
+
+          <p><a href="#address" data-toggle="collapse" class="btn btn-outline-info main-button">Address</a></p>
+          <div class="collapse" id="address">
+            <div class="card card-block">
+              <p>
+                <%= service.address.line1 %><br>
+                <% if(service.address.line2) { %><%= service.address.line2 %><br><% } %>
+                <%= service.address.city %><br>
+                <%= service.address.postcode %><br>
+                <%= service.website %><br>
+                <%= service.number %><br>
+              </p>
+            </div>
+            <div class="row">
+
+            </div>
+
+            <small>Added by: <%= service.createdBy.username %></small>
+            <% if(locals.isAuthenticated && service.belongsTo(user)) { %>
+              <a href="/services/<%= service.id %>/edit" class="btn btn-outline-info main-button">Edit</a>
+              <% } %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="services-box">
+
+
+        <% if(locals.isAuthenticated) { %>
+          <section>
+          <h3>Rate Each Service</h3>
+          <form method="POST" action="/services/<%= service.id %>/ratings">
+          <div>
           <label for="dignity">Dignity and Respect</label>
           <input type="radio" name="dignity" id="dignity" value="1"> 1
           <input type="radio" name="dignity" id="dignity" value="2"> 2
           <input type="radio" name="dignity" id="dignity" value="3"> 3
           <input type="radio" name="dignity" id="dignity" value="4"> 4
           <input type="radio" name="dignity" id="dignity" value="5"> 5
-        </div>
-        <div>
+          </div>
+          <div>
           <label for="advice">Quality of Advice</label>
           <input type="radio" name="advice" id="advice" value="1"> 1
           <input type="radio" name="advice" id="advice" value="2"> 2
           <input type="radio" name="advice" id="advice" value="3"> 3
           <input type="radio" name="advice" id="advice" value="4"> 4
           <input type="radio" name="advice" id="advice" value="5"> 5
-        </div>
-        <div>
+          </div>
+          <div>
           <label for="facilities">Quality of facilities</label>
           <input type="radio" name="facilities" id="facilities" value="1"> 1
           <input type="radio" name="facilities" id="facilities" value="2"> 2
           <input type="radio" name="facilities" id="facilities" value="3"> 3
           <input type="radio" name="facilities" id="facilities" value="4"> 4
           <input type="radio" name="facilities" id="facilities" value="5"> 5
+          </div>
+          <input type="submit" class="btn btn-outline-info button-round main-button" value="Add rating">
+          </form>
+          </section>
+          <% } %>
         </div>
-        <input type="submit" value="Add rating">
-      </form>
-      </section>
-      <% } %>
-    </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <section>
-          <h3>Comments</h3>
-          <% service.comments.forEach((comment) => { %>
-            <p><%= comment.content %></p>
-            <small><%= comment.createdBy.username %></small>
-            <% if(locals.isAuthenticated && comment.belongsTo(user)) { %>
-              <form method="POST" action="/services/<%= service._id %>/comments/<%= comment._id %>">
-                <input type="hidden" name="_method" value="DELETE">
-                <button class="button alert">Delete</button>
-              </form>
-              <% } %>
-              <% }) %>
-            </section>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="services-box">
 
-            <% if(locals.isAuthenticated) { %>
-              <section>
-              <h3>Leave a comment</h3>
-              <form method="POST" action="/services/<%= service.id %>/comments">
-              <textarea name="content" id="content" placeholder="Comment" required maxlength="255"></textarea>
-              <button class="button">Leave a comment</button>
-              </form>
+          <section>
+
+            <h3>Comments</h3>
+            <% service.comments.forEach((comment) => { %>
+              <p><%= comment.content %></p>
+              <small><%= comment.createdBy.username %></small>
+              <% if(locals.isAuthenticated && comment.belongsTo(user)) { %>
+                <form method="POST" action="/services/<%= service._id %>/comments/<%= comment._id %>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button class="btn btn-outline-info main-button">Delete</button>
+                </form>
+                <% } %>
+                <% }) %>
               </section>
-              <% } %>
-</div>
-</div>
-</div>
-</div>
+
+              <% if(locals.isAuthenticated) { %>
+                <section>
+                <h3>Leave a comment</h3>
+                <form method="POST" action="/services/<%= service.id %>/comments">
+                <textarea name="content" id="content" placeholder="Comment" required maxlength="255"></textarea>
+                <button class="btn btn-outline-info main-button">Leave a comment</button>
+                </form>
+                </section>
+                <% } %>
+              </div>
+
+              </div>
+            </div>
+          </div>
+        </div>

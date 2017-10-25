@@ -1,4 +1,6 @@
 const Service = require('../models/service');
+let averageRatings;
+let averageDisplay;
 
 function indexRoute(req, res, next) {
   Service
@@ -45,19 +47,20 @@ function showRoute(req, res, next) {
       if(!service) return res.notFound();
       let avgOfAverages = null;
       if (service.ratings.length > 0) {
-        const averageDignity = [[], [], []];
+        const averageAll = [[], [], []];
         for (var i = 0; i < service.ratings.length; i++) {
           const rating = service.ratings[i];
-          if (rating.dignity) averageDignity[0].push(parseInt(rating.dignity));
-          if (rating.advice) averageDignity[1].push(parseInt(rating.advice));
-          if (rating.facilities) averageDignity[2].push(parseInt(rating.facilities));
+          if (rating.dignity) averageAll[0].push(parseInt(rating.dignity));
+          if (rating.advice) averageAll[1].push(parseInt(rating.advice));
+          if (rating.facilities) averageAll[2].push(parseInt(rating.facilities));
         }
 
-        const avgRatingDig = { name: 'Dignity and Respect', avg: average(averageDignity[0]) };
-        const avgRatingAdv = { name: 'Quality of Advice', avg: average(averageDignity[1]) };
-        const avgRatingFac = { name: 'Quality of facilities', avg: average(averageDignity[2]) };
+        const avgRatingDig = { name: 'Dignity and Respect', avg: average(averageAll[0]) };
+        const avgRatingAdv = { name: 'Quality of Advice', avg: average(averageAll[1]) };
+        const avgRatingFac = { name: 'Quality of facilities', avg: average(averageAll[2]) };
 
-        const averageRatings = [avgRatingDig.avg, avgRatingAdv.avg, avgRatingFac.avg];
+        averageDisplay = [avgRatingDig, avgRatingAdv, avgRatingFac];
+        averageRatings = [avgRatingDig.avg, avgRatingAdv.avg, avgRatingFac.avg];
         avgOfAverages = average(averageRatings);
       }
 
@@ -71,7 +74,7 @@ function showRoute(req, res, next) {
         }
       }
 
-      return res.render('services/show', { service, avgOfAverages });
+      return res.render('services/show', { service, avgOfAverages, averageDisplay });
     })
     .catch(next);
 }

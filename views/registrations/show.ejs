@@ -5,9 +5,9 @@
 
 <p><%= user.email %></p>
 
-<a href="/profile/<%= user.id %>/edit" class="button">Edit</a>
+<a href="/profile/<%= user.id %>/edit" class="btn btn-outline-info button-round">Edit</a>
 
 <form method="POST" action="/profile">
   <input type="hidden" name="_method" value="DELETE">
-  <button class="button alert">Delete</button>
+  <button class="btn btn-outline-info button-round">Delete</button>
 </form>

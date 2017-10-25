@@ -1,5 +1,5 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Arvo', serif;
   color: black;
   background-color: white;
 }
@@ -12,15 +12,21 @@ a {
 
 h1 {
   font-size: 30px;
+  font-family: 'Arvo', serif;
+
 }
 
 h2 {
   font-size: 25px;
+  font-family: 'Arvo', serif;
+
 }
 
 
 h3 {
   font-size: 20px;
+  font-family: 'Arvo', serif;
+
 }
 
 p {
@@ -30,4 +36,8 @@ p {
 
 .buffer-top {
   margin-top: 30px;
+}
+
+.button-round {
+  border-radius: 5px;
 }

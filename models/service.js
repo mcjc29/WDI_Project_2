@@ -21,12 +21,6 @@ ratingSchema.methods.belongsTo = function ratingBelongsTo(user) {
   if(typeof this.createdBy.id === 'string') return this.createdBy.id === user.id;
   return user.id === this.createdBy.toString();
 };
-//
-// const categorySchema = new mongoose.Schema({
-//   sexual: []
-//   domestic:
-//   pregnancy:
-// });
 
 const serviceSchema = new mongoose.Schema({
   name: String,
