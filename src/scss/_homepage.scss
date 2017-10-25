@@ -2,11 +2,9 @@
   text-align: center;
   border: 1px solid gray;
   border-radius: 10px;
-  // box-sizing: border-box;
-  // margin: 5px;
-  // padding: 20px;
-  // width: 100px;
   height: 200px;
+  margin-top: 30px;
+
 }
 
 i {
@@ -15,6 +13,8 @@ i {
 
 .material-icons.md-100 {
   font-size: 100px;
+  color: gray;
+
 }
 
 .blob {
