@@ -6,9 +6,12 @@ const secureRoute = require('../lib/secureRoute');
 
 router.get('/', (req, res) => res.render('statics/homepage'));
 
-router.route('/services/categories/:category')
+router.route('/services')
   .get(servicesController.index)
   .post(secureRoute, servicesController.create);
+
+router.route('/services/categories/:category')
+  .get(servicesController.index);
 
 router.route('/services/new')
   .get(secureRoute, servicesController.new);

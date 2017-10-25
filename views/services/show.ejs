@@ -16,12 +16,20 @@
         <div class="services-box">
 
           <h3>Ratings:</h3>
-          <h4> <%= avgOfAverages %> </h4>
+          <% if (avgOfAverages) { %>
+            <h4> <%= avgOfAverages %> </h4>
+          <% } else { %>
+            <h4>No ratings yet</h4>
+          <% } %>
           <ul>
-            <% averageDisplay.forEach(rating => { %>
-              <p><%= rating.name %>: <%= rating.avg %></p>
-              <% }); %>
-            </ul>
+            <% service.averageRatings.forEach(rating => { %>
+              <% if (rating.avg === 0) { %>
+                <p><%= rating.name %>: No ratings yet</p>
+              <% } else { %>
+                <p><%= rating.name %>: <%= rating.avg %></p>
+              <% } %>
+            <% }); %>
+          </ul>
           </div>
 
         </div>
@@ -53,7 +61,38 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="services-box">
 
+        <section>
+
+          <h3>Comments</h3>
+          <% service.comments.forEach((comment) => { %>
+            <p><%= comment.content %></p>
+            <small><%= comment.createdBy.username %></small>
+            <% if(locals.isAuthenticated && comment.belongsTo(user)) { %>
+              <form method="POST" action="/services/<%= service._id %>/comments/<%= comment._id %>">
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="btn btn-outline-info main-button">Delete</button>
+              </form>
+              <% } %>
+              <% }) %>
+            </section>
+
+            <% if(locals.isAuthenticated) { %>
+              <section>
+              <h3>Leave a comment</h3>
+              <form method="POST" action="/services/<%= service.id %>/comments">
+              <textarea name="content" id="content" placeholder="Comment" required maxlength="255"></textarea>
+              <button class="btn btn-outline-info main-button">Leave a comment</button>
+              </form>
+              </section>
+              <% } %>
+            </div>
+
+            </div>
+          </div>
     <div class="row">
       <div class="col-md-12">
         <div class="services-box">
@@ -94,37 +133,6 @@
         </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="services-box">
 
-          <section>
-
-            <h3>Comments</h3>
-            <% service.comments.forEach((comment) => { %>
-              <p><%= comment.content %></p>
-              <small><%= comment.createdBy.username %></small>
-              <% if(locals.isAuthenticated && comment.belongsTo(user)) { %>
-                <form method="POST" action="/services/<%= service._id %>/comments/<%= comment._id %>">
-                <input type="hidden" name="_method" value="DELETE">
-                <button class="btn btn-outline-info main-button">Delete</button>
-                </form>
-                <% } %>
-                <% }) %>
-              </section>
-
-              <% if(locals.isAuthenticated) { %>
-                <section>
-                <h3>Leave a comment</h3>
-                <form method="POST" action="/services/<%= service.id %>/comments">
-                <textarea name="content" id="content" placeholder="Comment" required maxlength="255"></textarea>
-                <button class="btn btn-outline-info main-button">Leave a comment</button>
-                </form>
-                </section>
-                <% } %>
-              </div>
-
-              </div>
-            </div>
           </div>
         </div>

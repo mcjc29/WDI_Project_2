@@ -21,10 +21,21 @@ ratingSchema.methods.belongsTo = function ratingBelongsTo(user) {
   if(typeof this.createdBy.id === 'string') return this.createdBy.id === user.id;
   return user.id === this.createdBy.toString();
 };
+//
+// const catSchema = new mongoose.Schema({
+//   sexual: {type: String},
+//   domestic: {type: String},
+//   pregnancy: {type: String},
+//   // createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+// });
+// catSchema.methods.belongsTo = function catBelongsTo(user) {
+//   if(typeof this.createdBy.id === 'string') return this.createdBy.id === user.id;
+//   return user.id === this.createdBy.toString();
+// };
 
 const serviceSchema = new mongoose.Schema({
   name: String,
-  category: String,
+  category: [],
   categoryIcon: String,
   address: {
     line1: { type: String, required: true },

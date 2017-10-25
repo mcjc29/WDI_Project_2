@@ -1,18 +1,18 @@
 const Service = require('../models/service');
-let averageRatings;
+let averageRatingsNum;
 let averageDisplay;
-
 function indexRoute(req, res, next) {
+  console.log(req.params.category);
   Service
     .find()
     .populate('createdBy')
     .exec()
     .then((services) => {
-      console.log(req.params.category);
       const filteredServices = services.filter(service => {
-        return service.category === req.params.category;
+        return service.category.includes(req.params.category);
       });
-      console.log(filteredServices);
+
+      // console.log(filteredServices);
       res.render('services/index', { filteredServices });
     })
     .catch(next);
@@ -24,18 +24,17 @@ function newRoute(req, res) {
 
 function createRoute(req, res, next) {
   req.body.createdBy = req.user;
-
   Service
     .create(req.body)
-    .then(() => {
-      res.redirect('/services');
+    .then((service) => {
+      console.log(service);
+      res.redirect('/');
     })
     .catch((err) => {
       if(err.name === 'ValidationError') return res.badRequest(`/services/${req.params.id}/edit`, err.toString());
       next(err);
     });
 }
-
 
 function showRoute(req, res, next) {
 // console.log(req.params.id);
@@ -59,9 +58,11 @@ function showRoute(req, res, next) {
         const avgRatingAdv = { name: 'Quality of Advice', avg: average(averageAll[1]) };
         const avgRatingFac = { name: 'Quality of facilities', avg: average(averageAll[2]) };
 
-        averageDisplay = [avgRatingDig, avgRatingAdv, avgRatingFac];
-        averageRatings = [avgRatingDig.avg, avgRatingAdv.avg, avgRatingFac.avg];
-        avgOfAverages = average(averageRatings);
+        service.averageRatings = [avgRatingDig, avgRatingAdv, avgRatingFac];
+        service.save();
+        // console.log(service);
+        averageRatingsNum = [avgRatingDig.avg, avgRatingAdv.avg, avgRatingFac.avg];
+        avgOfAverages = average(averageRatingsNum);
       }
 
       function average(toDo) {
@@ -70,11 +71,11 @@ function showRoute(req, res, next) {
           const result = Math.round( (sum/toDo.length) * 10 ) / 10;
           return result;
         } else {
-          return 'No Ratings Yet';
+          return 0;
         }
       }
 
-      return res.render('services/show', { service, avgOfAverages, averageDisplay });
+      return res.render('services/show', { service, avgOfAverages });
     })
     .catch(next);
 }

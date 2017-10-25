@@ -5,7 +5,7 @@
 
       <div class="col-lg-4 col-md-6 col-sm-9 box">
       <div class="boarder-box">
-      <a href="/services/new %>">
+      <a href="/services/new">
       <div class="logo-container" style="height: 200px;"><i class="material-icons md-100 plus">plus_one</i></div>
       <div class= "service-name"
       <h1>Add a new service</h1>
@@ -13,7 +13,7 @@
       </div>
       </div>
       </div>
-      <% } %>
+    <% } %>
 
       <% filteredServices.forEach((service) => { %>
         <div class="col-lg-4 col-md-6 col-sm-9 box">
@@ -22,13 +22,12 @@
         <div class="logo-container" style="background-image: url('<%= service.image %>'); height: 200px;"></div>
         <div class= "service-name"
         <h1><%= service.name %></h1>
-        <h2>AVERAGE <%= service.average %></h2>
         </a>
         <h3><%= service.category %></h3>
         </div>
         </div>
         </div>
-        <% }) %>
+        <% }); %>
 
 
       </div>
