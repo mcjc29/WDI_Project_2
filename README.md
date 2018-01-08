@@ -2,7 +2,7 @@
 
 # WDI-30 Project 2 - Women's Services
 
-I created an app to rate women's services (LIST) to enable women to choose a service not solely based on location but on how they were treated and the quality of advice they received. I integrated full CRUD functionality for users and focused primarily on the user registration/login functionality, and aggregate rating functionality.
+I created an app to rate women's services (Pregnancy Support, Sexual Health & Contraception, Domestic & Sexual Abuse) to enable women to choose a service not solely based on location but on how they were treated and the quality of advice they received. I integrated full CRUD functionality for users and focused primarily on the user registration/login functionality, and aggregate rating functionality.
 
 This is a full-stack, RESTful Express app built using Node.js, MongoDB, JavaScript, EJS, SCSS and Bootstrap. It has been designed with mobile in mind and is responsive.
 
@@ -11,12 +11,12 @@ This is a full-stack, RESTful Express app built using Node.js, MongoDB, JavaScri
 
 ---
 
-###### After initial brainstorming and discussing the idea with others, I spent time wireframing. This was incredibly helpful to understand the flow of the website. It was also at this stage that I decided that given the nature of the problem it was important for all information to be available to non-members. The authentication process is reserved for creating a new servcie, comment and rating.
+###### After initial brainstorming and discussing the idea with others, I spent time wireframing. This was incredibly helpful to understand the flow of the website. It was also at this stage that I decided that given the nature of the problem it was important for all information to be available to non-members. The authentication process is reserved for creating a new service, comment and rating.
 
 <img src="https://i.imgur.com/7XtUfQ8.png" width="700">
 
 
-######  Once a service is selected a list of services is displayed with the top rated first. There is also the option to add a new service so that the network of services is evergrowing. The address is slide-toggled.
+######  Once a service is selected a list of services is displayed with the top rated first. There is also the option to add a new service so that the network of services is ever-growing. The address is slide-toggled.
 
 <img src="https://i.imgur.com/WbnqMr2.png" width="700">
 
