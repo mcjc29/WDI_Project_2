@@ -7,7 +7,7 @@ I created an app to rate women's services (Pregnancy Support, Sexual Health & Co
 This is a full-stack, RESTful Express app built using Node.js, MongoDB, JavaScript, EJS, SCSS and Bootstrap. It has been designed with mobile in mind and is responsive.
 
 
-##### [Visit website](https:/sdqew/)
+##### [Visit website](https://womens-services.herokuapp.com/)
 
 ---
 
